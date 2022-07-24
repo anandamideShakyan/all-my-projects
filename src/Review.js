@@ -1,30 +1,38 @@
 import React, { useState } from "react";
-import people from "./data";
-import { FaChevronLeft, FaChevronRight, FaQuoteRight } from "react-icons/fa";
+import projects from "./data";
+import { FaChevronLeft, FaChevronRight, FaLink } from "react-icons/fa";
+import { useEffect } from "react";
 
 const Review = () => {
 	const [index, setIndex] = useState(0);
-	const increaseIndex = () => setIndex((index + 1) % people.length);
+	const increaseIndex = () => setIndex((index + 1) % projects.length);
 	const decreaseIndex = () => {
-		if (index === 0) setIndex(people.length - 1);
+		if (index === 0) setIndex(projects.length - 1);
 		else setIndex(index - 1);
 	};
+	// useEffect(() => {
+	// 	setInterval(() => {
+	// 		setIndex((index + 1) % projects.length);
+	// 	}, 4000);
+	// });
 	return (
 		<>
 			<article className="review">
 				<div className="img-container">
 					<img
-						src={people[index].image}
-						alt={people[index].name}
+						src={projects[index].image}
+						alt={projects[index].name}
 						className="person-img"
 					/>
-					<span className="quote-icon">
-						<FaQuoteRight />
-					</span>
+					<a href={projects[index].link} target="_blank">
+						<span className="quote-icon">
+							<FaLink />
+						</span>
+					</a>
 				</div>
-				<h4 className="author">{people[index].name}</h4>
-				<h4 className="job">{people[index].job}</h4>
-				<p className="info">{people[index].text}</p>
+				<h4 className="author">{projects[index].name}</h4>
+				<h4 className="job">{projects[index].job}</h4>
+				<p className="info">{projects[index].text}</p>
 				<div className="button-container">
 					<button className="prev-btn" onClick={decreaseIndex}>
 						<FaChevronLeft />
@@ -34,14 +42,6 @@ const Review = () => {
 						<FaChevronRight />
 					</button>
 				</div>
-				<button
-					className="random-btn"
-					onClick={() =>
-						setIndex(Math.floor(Math.random() * people.length))
-					}
-				>
-					Surprise Me
-				</button>
 			</article>
 		</>
 	);

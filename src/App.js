@@ -1,15 +1,15 @@
 import React from "react";
-import Review from "./Review";
+import Project from "./Review";
 // import { FaGithubSquare } from "react-icons/fa";
 function App() {
 	return (
 		<main>
 			<section className="container">
 				<div className="title">
-					<h2>Our Reviews</h2>
+					<h2>My Projects</h2>
 					<div className="underline"></div>
 				</div>
-				<Review />
+				<Project />
 			</section>
 		</main>
 	);
